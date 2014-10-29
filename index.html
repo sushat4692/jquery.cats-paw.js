@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery.cats-paw.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="css/jquery.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>jquery.cats-paw.js</h1>
+            <p>猫の手も借りたい人のためのjQueryライブラリ</p>
+        </header>
+
+        <section class="small-12 large-12 columns">
+            <h1>目次</h1>
+            <div class="inner">
+                <ul>
+                    <li><a class="pn" href="#moving">動作環境</a></li>
+                    <li><a class="pn" href="#download">ダウンロード</a></li>
+                    <li><a class="pn" href="#functions">関数説明</a>
+                        <ul>
+                            <li><a class="pn" href="#rollOver">ロールオーバー</a></li>
+                            <li><a class="pn" href="#alphaRo">アルファロールオーバー</a></li>
+                            <li><a class="pn" href="#smScroll">スムーススクロール</a></li>
+                            <li><a class="pn" href="#anotherWin">サブウィンドウ表示</a></li>
+                            <li><a class="pn" href="#setHeight">高さ揃え</a></li>
+                            <li><a class="pn" href="#setDivAnchor">範囲リンク</a></li>
+                            <li><a class="pn" href="#stokerMenu">ストーカーメニュー</a></li>
+                            <li><a class="pn" href="#inputDefault">例文表示</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="pn" href="#updates">更新履歴</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="moving" name="moving">
+            <h1>動作環境</h1>
+            <p>jQuery1.2.5～1.11.1、〜2.1.1 動作確認済</p>
+            
+            <h2>対応ブラウザ（動作確認済）</h2>
+            <dl>
+                <dt>Windows</dt>
+                <dd>
+                    <ul>
+                        <li>Internet Explorer 6+</li>
+                        <li>Firefox3+</li>
+                        <li>Safari4+</li>
+                        <li>Google Chrome9+</li>
+                        <li>Opera10+</li>
+                    </ul>
+                </dd>
+            </dl>
+        </section>
+
+        <section id="download" name="download">
+            <h1>ダウンロード</h1>
+            <p><a href="https://github.com/sus-happy/jquery.cats-paw.js">GitHub</a></p>
+            
+            <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+        </section>
+
+        <article id="functions" name="functions">
+            <h1>関数説明</h1>
+            <!-- #####################################
+                rollOver
+            ###################################### -->
+            <section name="rollOver" id="rollOver">
+                <h1>ロールオーバー ( rollOver )</h1>
+                <p>画像のロールオーバーを設定する関数</p>
+
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.rollOver({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>適用する対象</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[find](string) = null</dt>
+                            <dd>{target}の絞り込み</dd>
+                            <dt>[off](string) = '_off.'</dt>
+                            <dd>ロールオーバー前画像の末尾語</dd>
+                            <dt>[on](string) = '_on.'</dt>
+                            <dd>ロールオーバー後画像の末尾語</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>ファイル名の最後が_offで終わっている画像を全てロールオーバーする</dt>
+                    <dd>
+                        <p><a href="#"><img src="img/btn_off.jpg" alt="test" border="0" /></a></p>
+                        <pre class="prettyprint linenums lang-js">$("img[src*='_off.']").rollOver();</pre>
+                    </dd>
+                    <dt>input要素の画像をロールオーバー</dt>
+                    <dd>
+                        <p><input type="image" src="img/btn_off.jpg" alt="test" border="0" /></p>
+                        <pre class="prettyprint linenums lang-js">$("input[src*='_off.']").rollOver();</pre>
+                    </dd>
+                    <dt>button要素内のimg要素をロールオーバー</dt>
+                    <dd>
+                        <p><button><img src="img/btn_off.jpg" alt="test" border="0" /></button></p>
+                        <pre class="prettyprint linenums lang-js">$("button").rollOver( { find: "img" });</pre>
+                    </dd>
+                </dl>
+
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                alphaRo
+            ###################################### -->
+            <section name="alphaRo" id="alphaRo">
+                <h1>アルファロールオーバー ( alphaRo )</h1>
+                <p>透明度の変化によるロールオーバーを設定する関数</p>
+
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.alphaRo({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>適用する対象</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[from](number) = 1</dt>
+                            <dd>ロールオーバー前の透明度</dd>
+                            <dt>[to](number) = 0.8</dt>
+                            <dd>ロールオーバー後の透明度</dd>
+                            <dt>[fade](boolean) = false</dt>
+                            <dd>アニメーションの有無</dd>
+                            <dt>[speed](*) = normal</dt>
+                            <dd>アニメーションの速度<br />
+                            （slow, normal, fastの三段階、もしくはミリ秒）</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p><a href="#" class="alp"><img src="img/btn.jpg" alt="test" border="0" /></a></p>
+                        <pre class="prettyprint linenums lang-js">$("a.alp").alphaRo();</pre>
+                    </dd>
+                    <dt>フェードアニメーション</dt>
+                    <dd>
+                        <p><a href="#" class="alpFade"><img src="img/btn.jpg" alt="test" border="0" /></a></p>
+                        <pre class="prettyprint linenums lang-js">$("a.alpFade").alphaRo({fade:true});</pre>
+                    </dd>
+                    <dt>アニメーション速度変更</dt>
+                    <dd>
+                        <p><a href="#" class="alpSp"><img src="img/btn.jpg" alt="test" border="0" /></a></p>
+                        <pre class="prettyprint linenums lang-js">$("a.alpSp").alphaRo({fade:true,speed:"fast"});</pre>
+                    </dd>
+                    <dt>透明度変更</dt>
+                    <dd>
+                        <p><a href="#" class="alpOpa"><img src="img/btn.jpg" alt="test" border="0" /></a></p>
+                        <pre class="prettyprint linenums lang-js">$("a.alpOpa").alphaRo({from:0.5,to:1,fade:true});</pre>
+                    </dd>
+                </dl>
+
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                alphaRo
+            ###################################### -->
+            <section name="smScroll" id="smScroll">
+                <h1>スムーススクロール ( smScroll )</h1>
+                <p>ページ内リンクをスクロールによって移動する関数</p>
+
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.smScroll({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>適用する対象</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[speed](*) = 700</dt>
+                            <dd>アニメーションの速度<br />
+                            （slow, normal, fastの三段階、もしくはミリ秒）</dd>
+                            <dt>[easing](string) = null</dt>
+                            <dd>アニメーションにかけるイージング名<br />
+                            <a href="http://semooh.jp/jquery/cont/doc/easing/" target="_blank">イージング名一覧</a></dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p><a href="#" class="pnStd">▲▲▲ページトップへ（デモ）▲▲▲</a></p>
+                        <pre class="prettyprint linenums lang-js">$(".pnStd").smScroll();</pre>
+                    </dd>
+                    <dt>速度変更</dt>
+                    <dd>
+                        <p><a href="#" class="pnSp">▲▲▲ページトップへ（デモ）▲▲▲</a></p>
+                        <pre class="prettyprint linenums lang-js">$(".pnSp").smScroll({speed:300});</pre>
+                    </dd>
+                    <dt>イージング<br />
+                    <a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank">※要easingプラグイン</a></dt>
+                    <dd>
+                        <p><a href="#" class="pnEase">▲▲▲ページトップへ（デモ）▲▲▲</a></p>
+                        <pre class="prettyprint linenums lang-js">$(".pnEase").smScroll({speed:1000,easing:"easeOutBounce"});</pre>
+                    </dd>
+                    <dt>URL変更無し<br />
+                    ※URL変更する際にページが崩れてしまうバグが発生する事があったための救済措置です、只今原因究明中</dt>
+                    <dd>
+                        <p><a href="#anotherWin" class="pnNHash">▼▼▼サブウィンドウ表示 ( anotherWin )へ（デモ）▼▼▼</a></p>
+                        <pre class="prettyprint linenums lang-js">$(".pnNHash").smScroll({hash:false});</pre>
+                    </dd>
+                </dl>
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                anotherWin
+            ###################################### -->
+            <section id="anotherWin" name="anotherWin">
+                <h1>サブウィンドウ表示 ( anotherWin )</h1>
+                <p>サブウィンドウを表示する関数<br />
+                ブラウザによってはリサイズは無効には出来ません</p>
+                
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.anotherWin({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>適用する対象</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[width](number) = 500</dt>
+                            <dd>サブウィンドウの横幅</dd>
+                            <dt>[height](number) = null</dt>
+                            <dd>サブウィンドウの縦幅、未入力の際は親ウィンドウに合わせる</dd>
+                            <dt>[name](string) = subWindow</dt>
+                            <dd>サブウィンドウ名</dd>
+                            <dt>[scrollbars](string:yes/no) = yes</dt>
+                            <dd>スクロールバーの有無</dd>
+                            <dt>[resizable](string:yes/no) = yes</dt>
+                            <dd>リサイズの可否</dd>
+                            <dt>[menubar](string:yes/no) = yes</dt>
+                            <dd>メニューバーの有無</dd>
+                            <dt>[attr](boolean) = false</dt>
+                            <dd>HTML側でサイズの指定をさせる（size="width,height"）<br />
+                            heightは省略可能、省略時は親ウィンドウに合わせる</dd>
+                        </dl>
+                    </dd>
+                </dl>
+                
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p><a class="sub" href="sub.html">サブウィンドウを開く</a></p>
+                        <pre class="prettyprint linenums lang-js">$(".sub").anotherWin();</pre>
+                    </dd>
+                    <dt>全指定</dt>
+                    <dd>
+                        <p><a class="subAll" href="sub.html">サブウィンドウを開く</a></p>
+                        <pre class="prettyprint linenums lang-js">$(".subAll").anotherWin({width:300,height:300,name:"sub",scrollbars:"no",resizable:"no",menubar:"no"});</pre>
+                    </dd>
+                    <dt>attrオプション</dt>
+                    <dd>
+                        <p><a class="subAttr" href="sub.html" data-size="500,500">サブウィンドウを開く</a></p>
+                        <h5>HTML</h5>
+                        <pre class="prettyprint linenums">&lt;a class="subAttr" href="sub.html" data-size="500,500"&gt;サブウィンドウを開く&lt;/a&gt;</pre>
+                        <h5>JavaScript</h5>
+                        <pre class="prettyprint linenums lang-js">$(".subAttr").anotherWin({attr:true});</pre>
+                    </dd>
+                </dl>
+
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                setHeight
+            ###################################### -->
+            <section name="setHeight" id="setHeight">
+                <h1 name="setHeight" id="setHeight">高さ揃え ( setHeight )</h1>
+                <p>指定要素の内、一番大きい高さの要素に合わせる関数</p>
+                
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.setHeight({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>高さを合わせる要素</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[outer](boolean) = false</dt>
+                            <dd>outerHeightで高さを取得する</dd>
+                            <dt>[step](boolean) = 0</dt>
+                            <dd>揃える要素数（0だと全て）</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p><a href="setheight_demo.html" target="_blank">デモ表示</a></p>
+                        <h3>HTML</h3>
+                        <pre class="prettyprint linenums">&lt;ul class="parent"&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$(".child").setHeight();</pre>
+                    </dd>
+                    <dt>要素数の指定</dt>
+                    <dd>
+                        <p><a href="setheight_demo_step.html" target="_blank">デモ表示</a></p>
+                        <h3>HTML</h3>
+                        <pre class="prettyprint linenums">&lt;ul class="parent"&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+    &lt;li class="child"&gt;
+        テスト&lt;br /&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$(".child").setHeight({step:2});</pre>
+                    </dd>
+                </dl>
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                setDivAnchor
+            ###################################### -->
+            <section id="setDivAnchor" name="setDivAnchor">
+                <h1>範囲リンク ( setDivAnchor )</h1>
+                <p>対象の要素をリンク要素と偽装し、包括するリンク要素の範囲を広げる</p>
+
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.setDivAnchor({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>拡大したいリンク範囲</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[not](string) = null</dt>
+                            <dd>{target}の適用外指定</dd>
+                            <dt>[class](string) = act</dt>
+                            <dd>マウスオーバー時に{target}に付与するクラス名</dd>
+                            <dt>[force](boolean) = true</dt>
+                            <dd>window.open、window.locationを利用してページ遷移<br />
+                            ページ遷移をせずにアクションを行う場合はfalseにしておく</dd>
+                            <dt>[over](function) = null</dt>
+                            <dd>マウスオーバー時の動作拡張</dd>
+                            <dt>[out](function) = null</dt>
+                            <dd>マウスアウト時の動作拡張</dd>
+                            <dt>[is_ro](boolean) = true</dt>
+                            <dd>範囲内の画像をロールオーバーするか</dd>
+                            <dt>[off](string) = '_off.'</dt>
+                            <dd>ロールオーバー前画像の末尾語</dd>
+                            <dt>[on](string) = '_on.'</dt>
+                            <dd>ロールオーバー後画像の末尾語</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p class="setDiv"><a href="#setDivAnchor">テストリンク</a></p>
+                        <p class="setDiv"><a href="#setDivAnchor"><img src="./img/btn_off.jpg" alt=""></a></p>
+                        <h3>CSS</h3>
+                        <pre class="prettyprint linenums lang-css">.setDiv {
+    padding:10px;
+    width:200px;
+    border:1px solid #ccc;
+}
+.act {
+    background:#ccc;
+}</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$(".setDiv").setDivAnchor();</pre>
+                    </dd>
+                    <dt>対象外設定</dt>
+                    <dd>
+                        <p class="setDivNotTest"><a href="#setDivAnchor">テストリンク</a></p>
+                        <p class="setDivNotTest not"><a href="#setDivAnchor">テストリンク対象外</a></p>
+                        <p class="setDivNotTest"><a href="#setDivAnchor">テストリンク</a></p>
+                        <h3>CSS</h3>
+                        <pre class="prettyprint linenums lang-css">.setDivNotTest {
+    padding:10px;
+    width:200px;
+    border:1px solid #ccc;
+}
+.act {
+    background:#ccc;
+}</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$(".setDivNotTest").setDivAnchor({not:".not"});</pre>
+                    </dd>
+                </dl>
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                stokerMenu
+            ###################################### -->
+            <section id="stokerMenu" name="stokerMenu">
+                <h1>ストーカーメニュー ( stokerMenu )</h1>
+                <p>スクロールに合わせて、少し遅れて付いてくるメニューを実装する</p>
+
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.stokerMenu({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>付いてくるメニュー</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[parent](string) = body</dt>
+                            <dd>メニューの移動領域</dd>
+                            <dt>[toPos](number/string:bottom) = 20</dt>
+                            <dd>メニュー停止する位置（ウィンドウ上部から相対）<br />
+                            「b」を指定すると下付き、「rb」を指定すると右下付き</dd>
+                            <dt>[delay](number) = 700</dt>
+                            <dd>スクロール開始からメニューが動き始める時間</dd>
+                            <dt>[speed](number) = 5</dt>
+                            <dd>メニューの移動速度（値が大きいほうが遅い）<br />
+                            ※ミリ秒等ではない</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <p>右下に出ているボタン</p>
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <h3>HTML</h3>
+                        <pre class="prettyprint linenums">&lt;div id="wrapper"&gt;
+    &lt;p id="topPage"&gt;&lt;a href="#" class="pn"&gt;▲ページトップへ&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+                        <h3>CSS</h3>
+                        <pre class="prettyprint linenums lang-css">#topPage {
+    margin:0;
+    padding-bottom:15px;
+}
+    #topPage a {
+        border:1px solid #fff;
+        padding:2px 5px;
+        color:#fff;
+        display:block;
+        background:#000;
+        text-decoration:none;
+        text-shadow:0 0 0;
+    }
+    #topPage a:hover {
+        border:1px solid #eee;
+        background:#222;
+    }</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$("#topPage").stokerMenu({parent:"#wrapper",toPos:"rb"});</pre>
+                    </dd>
+                </dl>
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                inputDefault
+            ###################################### -->
+            <section id="inputDefault" name="inputDefault">
+                <h1>例文表示 ( inputDefault )</h1>
+                <p>placeHolderが実装されていないブラウザでも例文を表示させる<br />
+                    input / textareaのtitle属性が例文として扱われる</p>
+
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.inputDefault({option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>例文を表示するinput / textareaの指定</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[form](string) = form</dt>
+                            <dd>送信前に処理をする対象formの指定<br />
+                            デフォルトは全formが対象</dd>
+                            <dt>[toColor](color) = #999999</dt>
+                            <dd>例文表示時の文字色</dd>
+                            <dt>[fromColor](color) = #333333</dt>
+                            <dd>入力時の文字色</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p><input class="inputDefault" title="Default Input" /></p>
+                        <pre class="prettyprint linenums lang-js">$(".inputDefault").inputDefault();</pre>
+                    </dd>
+                    <dt>文字色変更</dt>
+                    <dd>
+                        <p><input class="inputDefaultColor" title="Default Input" /></p>
+                        <h3>CSS</h3>
+                        <pre class="prettyprint linenums lang-css">input.inputDefaultColor {
+    background:#1a1a1a;
+    color:#fff;
+}</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$(".inputDefaultColor").inputDefault({toColor:"#999999",fromColor:"#FFFFFF"});</pre>
+                    </dd>
+                </dl>
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section>
+            <!-- #####################################
+                functionName
+            ######################################
+            <section id="functionName" name="functionName">
+                <h1 name="functionName" id="functionName">関数名 ( functionName )</h1>
+                <p>関数の概要</p>
+                <h2>関数概要</h2>
+                <pre class="desc">{target}.functionName({child}, {option});</pre>
+                <dl>
+                    <dt>{target}</dt>
+                    <dd>適用する対象</dd>
+                    <dt>{child}</dt>
+                    <dd>内容</dd>
+                    <dt>{option}</dt>
+                    <dd>
+                        <dl>
+                            <dt>[data](*) = default</dt>
+                            <dd>オプション内容</dd>
+                        </dl>
+                    </dd>
+                </dl>
+                <h2>デモ</h2>
+                <dl class="demo">
+                    <dt>スタンダード</dt>
+                    <dd>
+                        <p>Demo</p>
+                        <pre>Demo Code</pre>
+                    </dd>
+                </dl>
+                <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+            </section> -->
+        </article>
+        <section id="updates" name="updates">
+            <h1>更新履歴</h1>
+            <ul>
+                <li>2014.10.27 - v1.0.0公開
+                    <ul>
+                        <li>公開</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
+        <p id="topPage"><a href="#" class="pn">▲ページトップへ</a></p>
+    </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="./js/jquery.cats-paw.js"></script>
+    <script type="text/javascript">
+    <!--
+        $("img[src*='_off.']").rollOver();
+        $("input[src*='_off.']").rollOver();
+        $("button").rollOver( { 'find': "img" } );
+        $("a.alp").alphaRo();
+        $("a.alpFade").alphaRo({fade:true});
+        $("a.alpOpa").alphaRo({from:0.5,to:1,fade:true});
+        $("a.alpSp").alphaRo({fade:true,speed:"fast"});
+        $(".pn").smScroll({speed:800, easing:"easeOutCubic"});
+        $(".pnStd").smScroll();
+        $(".pnSp").smScroll({speed:300});
+        $(".pnEase").smScroll({speed:1500,easing:"easeOutBounce"});
+        $(".pnNHash").smScroll({hash:false});
+        $(".sub").anotherWin();
+        $(".subAll").anotherWin({width:300,height:300,name:"sub",scrollbars:"no",resizable:"no",menubar:"no"});
+        $(".subAttr").anotherWin({attr:true});
+        $(".setDiv").setDivAnchor();
+        $(".setDivNotTest").setDivAnchor({not:".not"});
+        $("#topPage").stokerMenu({parent:"#wrapper",toPos:"rb"});
+        $(".inputDefault").inputDefault();
+        $(".inputDefaultColor").inputDefault({toColor:"#999999",fromColor:"#FFFFFF"});
+    // -->
+    </script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian&lang=css&lang=html"></script>
+</body>
+</html>

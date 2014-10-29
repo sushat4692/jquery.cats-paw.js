@@ -1,0 +1,91 @@
+@charset "UTF-8";
+html {
+  font: 16px/1.6 sans-serif; }
+
+a {
+  color: #00D; }
+
+a:hover {
+  text-decoration: none; }
+
+img {
+  vertical-align: top; }
+
+#wrapper {
+  width: 90%;
+  min-width: 600px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1px 0; }
+
+header {
+  font-size: 2em;
+  padding-bottom: 6rem;
+  margin-bottom: 6rem;
+  border-bottom: 1px solid #ccc;
+  text-align: center; }
+  header p {
+    margin: 0; }
+
+section {
+  padding: 0 1rem 6rem;
+  margin-bottom: 6rem;
+  border-bottom: 1px solid #ccc; }
+  section > h1 {
+    font-size: 3em; }
+  section > h2 {
+    font-size: 2em; }
+  section button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none; }
+
+article > h1 {
+  font-size: 5em;
+  text-align: center; }
+
+pre.desc {
+  padding: 1em;
+  border: 1px solid #ccc; }
+
+.demo dt {
+  font-weight: bold;
+  margin-left: 2em; }
+.demo dd {
+  border: 1px solid #ccc;
+  padding: 1px 1em;
+  margin: 0 0 2em 2em; }
+  .demo dd h3 {
+    margin-bottom: 0; }
+  .demo dd pre {
+    margin-top: 0; }
+
+/* デモ用 */
+.setDiv,
+.setDivNotTest {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc; }
+  .setDiv.act,
+  .setDivNotTest.act {
+    background: #ccc; }
+
+#topPage {
+  margin: 0;
+  padding-bottom: 15px; }
+  #topPage a {
+    border: 1px solid #fff;
+    padding: 2px 5px;
+    color: #fff;
+    display: block;
+    background: #000;
+    text-decoration: none;
+    text-shadow: 0 0 0; }
+    #topPage a:hover {
+      border: 1px solid #eee;
+      background: #222; }
+
+input.inputDefaultColor {
+  background: #1a1a1a;
+  color: #fff; }

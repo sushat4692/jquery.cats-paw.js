@@ -9,7 +9,7 @@
     "build:ts": "tsc -p ./",
     "watch:ts": "tsc -p ./ -w",
     "uglifyjs": "uglifyjs --compress --mangle --output dist/jquery.cats-paw.min.js -- dist/jquery.cats-paw.js",
-    "copy": "cp -f ./dist/jquery.cats-paw.js ./docs/js/jquery.cats-paw.js",
+    "copy": "cp -f ./dist/jquery.cats-paw.js ./docs/js/jquery.cats-paw.js && cp -f ./dist/jquery.cats-paw.min.js ./docs/js/jquery.cats-paw.min.js",
     "build": "npm run build:ts && npm run uglifyjs && npm run copy"
   },
   "dependencies": {},

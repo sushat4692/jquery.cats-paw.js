@@ -154,7 +154,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <dt>[fade](boolean) = false</dt>
                             <dd>アニメーションの有無</dd>
                             <dt>[speed](*) = normal</dt>
-                            <dd>アニメーションの速度<br />
+                            <dd>アニメーションの速度<br>
                             （slow, normal, fastの三段階、もしくはミリ秒）</dd>
                         </dl>
                     </dd>
@@ -202,10 +202,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <dd>
                         <dl>
                             <dt>[speed](*) = 700</dt>
-                            <dd>アニメーションの速度<br />
+                            <dd>アニメーションの速度<br>
                             （slow, normal, fastの三段階、もしくはミリ秒）</dd>
                             <dt>[easing](string) = null</dt>
-                            <dd>アニメーションにかけるイージング名<br />
+                            <dd>アニメーションにかけるイージング名<br>
                             <a href="http://semooh.jp/jquery/cont/doc/easing/" target="_blank">イージング名一覧</a></dd>
                         </dl>
                     </dd>
@@ -223,13 +223,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <p><a href="#" class="pnSp">▲▲▲ページトップへ（デモ）▲▲▲</a></p>
                         <pre class="prettyprint linenums lang-js">$(".pnSp").smScroll({speed:300});</pre>
                     </dd>
-                    <dt>イージング<br />
+                    <dt>イージング<br>
                     <a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank">※要easingプラグイン</a></dt>
                     <dd>
                         <p><a href="#" class="pnEase">▲▲▲ページトップへ（デモ）▲▲▲</a></p>
                         <pre class="prettyprint linenums lang-js">$(".pnEase").smScroll({speed:1000,easing:"easeOutBounce"});</pre>
                     </dd>
-                    <dt>URL変更無し<br />
+                    <dt>URL変更無し<br>
                     ※URL変更する際にページが崩れてしまうバグが発生する事があったための救済措置です、只今原因究明中</dt>
                     <dd>
                         <p><a href="#anotherWin" class="pnNHash">▼▼▼サブウィンドウ表示 ( anotherWin )へ（デモ）▼▼▼</a></p>
@@ -243,7 +243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             ###################################### -->
             <section id="anotherWin" name="anotherWin">
                 <h1>サブウィンドウ表示 ( anotherWin )</h1>
-                <p>サブウィンドウを表示する関数<br />
+                <p>サブウィンドウを表示する関数<br>
                 ブラウザによってはリサイズは無効には出来ません</p>
                 
                 <h2>関数概要</h2>
@@ -267,7 +267,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <dt>[menubar](string:yes/no) = yes</dt>
                             <dd>メニューバーの有無</dd>
                             <dt>[attr](boolean) = false</dt>
-                            <dd>HTML側でサイズの指定をさせる（size="width,height"）<br />
+                            <dd>HTML側でサイズの指定をさせる（size="width,height"）<br>
                             heightは省略可能、省略時は親ウィンドウに合わせる</dd>
                         </dl>
                     </dd>
@@ -316,6 +316,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <dd>outerHeightで高さを取得する</dd>
                             <dt>[step](boolean) = 0</dt>
                             <dd>揃える要素数（0だと全て）</dd>
+                            <dt>[resize](boolean) = false</dt>
+                            <dd>レスポンシブ対応（リサイズ時に再実行）</dd>
                         </dl>
                     </dd>
                 </dl>
@@ -328,21 +330,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <h3>HTML</h3>
                         <pre class="prettyprint linenums">&lt;ul class="parent"&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</pre>
                         <h3>JavaScript</h3>
@@ -354,33 +356,74 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <h3>HTML</h3>
                         <pre class="prettyprint linenums">&lt;ul class="parent"&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
     &lt;li class="child"&gt;
-        テスト&lt;br /&gt;
+        テスト&lt;br&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</pre>
                         <h3>JavaScript</h3>
                         <pre class="prettyprint linenums lang-js">$(".child").setHeight({step:2});</pre>
+                    </dd>
+                    <dt>レスポンシブ対応</dt>
+                    <dd>
+                        <p><a href="setheight_demo_responsive.html" target="_blank">デモ表示</a></p>
+                        <h3>HTML</h3>
+                        <pre class="prettyprint linenums">&lt;ul class="parent"&gt;
+    &lt;li class="child child-rwd"&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+    &lt;/li&gt;
+    &lt;li class="child child-rwd"&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+    &lt;/li&gt;
+    &lt;li class="child child-rwd"&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+    &lt;/li&gt;
+    &lt;li class="child child-rwd"&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+    &lt;/li&gt;
+    &lt;li class="child child-rwd"&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+        テストテストテストテストテストテスト&lt;br&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</pre>
+                        <h3>JavaScript</h3>
+                        <pre class="prettyprint linenums lang-js">$(".child").setHeight({step:4, resize: true});</pre>
                     </dd>
                 </dl>
                 <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
@@ -405,7 +448,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <dt>[class](string) = act</dt>
                             <dd>マウスオーバー時に{target}に付与するクラス名</dd>
                             <dt>[force](boolean) = true</dt>
-                            <dd>window.open、window.locationを利用してページ遷移<br />
+                            <dd>window.open、window.locationを利用してページ遷移<br>
                             ページ遷移をせずにアクションを行う場合はfalseにしておく</dd>
                             <dt>[over](function) = null</dt>
                             <dd>マウスオーバー時の動作拡張</dd>
@@ -477,12 +520,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <dt>[parent](string) = body</dt>
                             <dd>メニューの移動領域</dd>
                             <dt>[toPos](number/string:bottom) = 20</dt>
-                            <dd>メニュー停止する位置（ウィンドウ上部から相対）<br />
+                            <dd>メニュー停止する位置（ウィンドウ上部から相対）<br>
                             「b」を指定すると下付き、「rb」を指定すると右下付き</dd>
                             <dt>[delay](number) = 700</dt>
                             <dd>スクロール開始からメニューが動き始める時間</dd>
                             <dt>[speed](number) = 5</dt>
-                            <dd>メニューの移動速度（値が大きいほうが遅い）<br />
+                            <dd>メニューの移動速度（値が大きいほうが遅い）<br>
                             ※ミリ秒等ではない</dd>
                         </dl>
                     </dd>
@@ -526,7 +569,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             ###################################### -->
             <section id="inputDefault" name="inputDefault">
                 <h1>例文表示 ( inputDefault )</h1>
-                <p>placeHolderが実装されていないブラウザでも例文を表示させる<br />
+                <p>placeHolderが実装されていないブラウザでも例文を表示させる<br>
                     input / textareaのtitle属性が例文として扱われる</p>
 
                 <h2>関数概要</h2>
@@ -538,12 +581,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <dd>
                         <dl>
                             <dt>[form](string) = form</dt>
-                            <dd>送信前に処理をする対象formの指定<br />
+                            <dd>送信前に処理をする対象formの指定<br>
                             デフォルトは全formが対象</dd>
                             <dt>[toColor](color) = #999999</dt>
                             <dd>例文表示時の文字色</dd>
                             <dt>[fromColor](color) = #333333</dt>
                             <dd>入力時の文字色</dd>
+                            <dt>[attr](string) = title</dt>
+                            <dd>参照するHTML属性</dd>
                         </dl>
                     </dd>
                 </dl>
@@ -609,6 +654,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <li>公開</li>
                     </ul>
                 </li>
+                <li>2017.10.28 - v2.0.0公開
+                    <ul>
+                        <li>TypeScriptに書き換え</li>
+                    </ul>
+                </li>
             </ul>
         </section>
         <p class="pageNavi"><a class="pn" href="#">▲ページトップへ</a></p>
@@ -618,7 +668,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script type="text/javascript" src="./js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="./js/jquery.cats-paw.js"></script>
     <script type="text/javascript">
-    <!--
         $("img[src*='_off.']").rollOver();
         $("input[src*='_off.']").rollOver();
         $("button").rollOver( { 'find': "img" } );
@@ -639,8 +688,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         $("#topPage").stokerMenu({parent:"#wrapper",toPos:"rb"});
         $(".inputDefault").inputDefault();
         $(".inputDefaultColor").inputDefault({toColor:"#999999",fromColor:"#FFFFFF"});
-    // -->
     </script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian&lang=css&lang=html"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sons-of-obsidian&lang=css"></script>
 </body>
 </html>

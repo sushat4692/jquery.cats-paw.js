@@ -3,12 +3,21 @@
 
 .parent {
 	list-style:none;
+	overflow: hidden;
 }
 	.child {
 		background:#eee;
 		padding:15px;
 		margin:0 15px;
 		float:left;
+	}
+	.child-rwd {
+		width: 20%;
+		margin: 0 2.5% 15px;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
 	}
 	
 /* clearfix

@@ -1,0 +1,24 @@
+{
+  "name": "LH",
+  "version": "1.0.0",
+  "description": "LH&Creatives Inc. base package.json",
+  "main": "index.js",
+  "scripts": {
+    "build:scss": "node-sass htdocs/ryutsu-tsunagu/data/scss/ -o htdocs/ryutsu-tsunagu/data/css/ --source-map htdocs/ryutsu-tsunagu/data/css/ -r",
+    "watch:scss": "node-sass htdocs/ryutsu-tsunagu/data/scss/ -o htdocs/ryutsu-tsunagu/data/css/ --source-map htdocs/ryutsu-tsunagu/data/css/ -w htdocs/ryutsu-tsunagu/data/scss/ -r",
+    "build:ts": "tsc -p ./",
+    "watch:ts": "tsc -p ./ -w",
+    "uglifyjs": "uglifyjs --compress --mangle --output dist/jquery.cats-paw.min.js -- dist/jquery.cats-paw.js",
+    "copy": "cp -f ./dist/jquery.cats-paw.js ./docs/js/jquery.cats-paw.js",
+    "build": "npm run build:ts && npm run uglifyjs && npm run copy"
+  },
+  "dependencies": {},
+  "author": "SUSH",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.2.15",
+    "node-sass": "^4.5.3",
+    "typescript": "^2.5.3",
+    "uglify-js": "^3.1.5"
+  }
+}

@@ -13,7 +13,7 @@
 * 例文表示
 
 ## こんな感じに動きます
-[デモとドキュメント](http://sus-happy.github.io/jquery.cats-paw.js/)
+[デモとドキュメント](http://sushat4692.github.io/jquery.cats-paw.js/)
 
 ## ライセンス
 MIT
